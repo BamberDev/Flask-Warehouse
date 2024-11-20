@@ -1,0 +1,102 @@
+{% extends "base.html" %}{% block content %}
+<h1 class="underline"><a href="/">Strona główna</a></h1>
+<div class="flex flex-col justify-center items-center">
+  <div>
+    <h2>Stan konta: {{konto}}</h2>
+    <form action="/" method="POST" class="flex flex-col">
+      <label for="kwota">Podaj kwote do dodania lub odjecia z konta:</label>
+      <input
+        class="form-input"
+        type="number"
+        name="kwota"
+        id="kwota"
+        placeholder="Kwota"
+        required
+      />
+      <button type="submit" class="form-button">Zatwierdz</button>
+    </form>
+  </div>
+
+  <div>
+    <h2 class="mb-2">Stan magazynu:</h2>
+    <ul class="text-left overflow-auto max-h-50">
+      {% for produkt, dane in magazyn.items() %}
+      <li>{{produkt}}: {{dane["ilosc"]}} sztuk, Cena: {{dane["cena"]}}</li>
+      {% else %}
+      <li>Magazyn jest pusty.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="flex gap-5">
+  <div>
+    <form action="" class="flex flex-col" method="POST">
+      <h2>Zakup produkt</h2>
+      <label for="produkt">Nazwa produktu:</label>
+      <input
+        class="form-input"
+        type="text"
+        name="produkt"
+        id="produkt"
+        placeholder="Nazwa produktu"
+        required
+      />
+      <label for="cena">Cena zakupu:</label>
+      <input
+        class="form-input"
+        type="number"
+        name="cena"
+        id="cena"
+        placeholder="Cena zakupu"
+        required
+      />
+      <label for="liczba_sztuk">Liczba sztuk:</label>
+      <input
+        class="form-input"
+        type="number"
+        name="liczba_sztuk"
+        id="liczba_sztuk"
+        placeholder="Liczba sztuk"
+        required
+      />
+      <button type="submit" class="form-button">Kup</button>
+    </form>
+  </div>
+
+  <div>
+    <form action="" class="flex flex-col" method="POST">
+      <h2>Sprzedaj produkt</h2>
+      <label for="produkt">Nazwa produktu:</label>
+      <input
+        class="form-input"
+        type="text"
+        name="produkt"
+        id="produkt"
+        placeholder="Nazwa produktu"
+        required
+      />
+      <label for="cena">Cena sprzedarzy:</label>
+      <input
+        class="form-input"
+        type="number"
+        name="cena"
+        id="cena"
+        placeholder="Cena sprzedarzy"
+        required
+      />
+      <label for="liczba_sztuk">Liczba sztuk:</label>
+      <input
+        class="form-input"
+        type="number"
+        name="liczba_sztuk"
+        id="liczba_sztuk"
+        placeholder="Liczba sztuk"
+        required
+      />
+      <button type="submit" class="form-button">Sprzedaj</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
