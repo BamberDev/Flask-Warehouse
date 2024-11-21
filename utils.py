@@ -22,22 +22,6 @@ class Manager:
             raise AttributeError(f"Komenda {action_name} nie istnieje")
 
 
-def lista_komend():
-    print(
-        """
-Dostepne komendy:
-- saldo
-- sprzedaz
-- zakup
-- konto
-- lista
-- magazyn
-- przeglad
-- koniec
-"""
-    )
-
-
 def wyswietl_konto(data):
     with open(data, "r") as file:
         return int(file.read())
@@ -78,17 +62,3 @@ def zapisz_historie(historia, data):
     with open(data, "a") as file:
         file.write(f"{historia[-1]}\n")
     print("\nHistoria zostala zapisana")
-
-
-# @app.route("/", methods=["GET", "POST"])
-# def index():
-#     konto = wyswietl_konto()
-#     if request.method == "POST":
-#         try:
-#             saldo(konto)
-#         except ValueError:
-#             pass
-#         return redirect(url_for("index"))
-#     return render_template(
-#         "index.html", page_title="Zarzadzanie magazynem", konto=konto, magazyn=magazyn
-#     )
